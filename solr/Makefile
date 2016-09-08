@@ -71,7 +71,7 @@ solr/%/conf/data-config.xml: data-config/$(DBSUBDIR)/data-config_%.xml.php
 solr_home: $(EXAMPLE_FILES) $(DRIVER) $(FOUND_CORE_TARGETS) $(ROOT_FILES)
 
 start: solr_home
-	java -jar start.jar
+	java $(SOLR_OPTS) -jar start.jar
 
 $(FULL_IMPORT_TARGETS):
 	curl -f "http://localhost:8983/solr/$(patsubst %_full_import,%,$@)/dataimport?command=full-import"
